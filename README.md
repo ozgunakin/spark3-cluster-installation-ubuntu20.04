@@ -68,7 +68,7 @@ ssh user@slave1
 
 ## Step 5 - Install Apache Spark
 
-We will do these steps on all nodes.
+#### We will do these steps on all nodes !!!
 
 * [x] Download Apache Spark
 
@@ -87,3 +87,91 @@ tar xvf spark-3.2.1-bin-hadoop3.2.tgz
 ```
 sudo mv spark-3.2.1-bin-hadoop3.2 /opt/
 ```
+
+* [x] Open .bashrc file
+
+```
+nano ~/.bashrc
+```
+
+* [x] Add following lines into .bashrc file
+
+```
+export PATH=$PATH:/opt/spark-3.2.1-bin-hadoop3.2
+```
+
+* [x] Source .bashrc file to apply the changes&#x20;
+
+```
+source ~/.bashrc
+```
+
+
+
+#### We will do the following steps on only Master Node !!!
+
+* [x] Create spark-env.sh file by copying spark-env.sh.template and open this file (ON MASTER)
+
+```
+cd /opt/spark-3.2.1-bin-hadoop3.2/conf
+
+cp spark-env.sh.template spark.env.sh
+
+nano spark.env.sh
+```
+
+* [x] Add the following lines into spark-env.sh file (ON MASTER)
+
+```
+export SPARK_MASTER_HOST='<MASTER-IP>'
+export JAVA_HOME= <JAVA_INSTALLATION_PATH>
+```
+
+* [x] Add workers (ON MASTER)
+
+```
+cd /opt/spark-3.2.1-bin-hadoop3.2/conf
+
+nano slaves
+```
+
+* [x] Add following lines (Including host names of the slaves) (ON MASTER)
+
+```
+master
+slave1
+slave2
+```
+
+* [x] Run Spark Cluster (ON MASTER)
+
+```
+cd /opt/spark-3.2.1-bin-hadoop3.2
+
+./sbin/start-all.sh
+```
+
+* [x] Check the status of your cluster over spark UI. Go to your browser and type  [http://\<MASTER-IP>:8080/](http://\<MASTER-IP>:8080/)
+
+![](.gitbook/assets/image.png)
+
+## Step 6 - Start Spark on Reboot (Additional Step)
+
+You can write a system service to start spark on reboot but to ensure this easly we will use cron job.
+
+* [x] Open cronjob file
+
+```
+crontab -e
+```
+
+* [x] Add the following line
+
+```
+@reboot /opt/spark-3.2.1-bin-hadoop3.2/sbin/start-all.sh
+```
+
+## Congratulations :)
+
+Your spark cluster is up and running !!!
+
