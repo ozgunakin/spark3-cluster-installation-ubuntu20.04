@@ -30,13 +30,7 @@ sudo nano /etc/hosts
 160.75.61.202 slave2
 ```
 
-## Step 3 - Install Scala
-
-```
-sudo apt-get install scala
-```
-
-## Step 4 - Configure SSH
+## Step 3 - Configure SSH
 
 You need to install open ssh on each node and you need to configure a passwordless ssh connection between nodes.
 
@@ -66,7 +60,7 @@ ssh-copy-id user@slave2
 ssh user@slave1
 ```
 
-## Step 5 - Install Apache Spark
+## Step 4 - Install Apache Spark
 
 #### We will do these steps on all nodes !!!
 
@@ -151,11 +145,11 @@ cd /opt/spark-3.2.1-bin-hadoop3.2
 ./sbin/start-all.sh
 ```
 
-* [x] Check the status of your cluster over spark UI. Go to your browser and type  [http://\<MASTER-IP>:8080/](http://\<MASTER-IP>:8080/)
+* [x] Check the status of your cluster over spark UI. Go to your browser and type  http://\<MASTER-IP>:8080/
 
 ![](.gitbook/assets/image.png)
 
-## Step 6 - Start Spark on Reboot (Additional Step)
+## Step 5 - Start Spark on Reboot (Additional Step)
 
 You can write a system service to start spark on reboot but to ensure this easly we will use cron job.
 
