@@ -10,6 +10,8 @@ description: >-
 
 If java is not installed on your servers, you can install java by following the instructions in;&#x20;
 
+NOTE: We will be using java 8 for this project.&#x20;
+
 {% embed url="https://github.com/ozgunakin/java-installation-on-ubuntu20.04" %}
 
 ## Step 2 - Configure Host Files
