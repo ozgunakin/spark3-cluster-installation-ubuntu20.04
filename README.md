@@ -22,7 +22,7 @@ You need to configure host names and host files for each node.
 sudo nano /etc/hosts
 ```
 
-* [ ] Add IP addresses and hostnames of each node in the cluster.
+* [x] Add IP addresses and hostnames of each node in the cluster.
 
 ```
 160.75.61.200 master
@@ -91,7 +91,9 @@ nano ~/.bashrc
 * [x] Add following lines into .bashrc file
 
 ```
-export PATH=$PATH:/opt/spark-3.2.1-bin-hadoop3.2
+export SPARK_HOME=/opt/spark-3.2.1-bin-hadoop3.2 
+export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
+export PYSPARK_PYTHON=/usr/bin/python3
 ```
 
 * [x] Source .bashrc file to apply the changes&#x20;
